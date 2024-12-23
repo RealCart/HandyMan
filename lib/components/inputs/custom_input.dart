@@ -23,8 +23,12 @@ class CustomInput extends StatelessWidget {
     return TextField(
       controller: controller,
       obscureText: obscureText,
+      cursorColor: const Color(0xff7C7C7C),
       keyboardType: keyboardType,
       decoration: InputDecoration(
+        labelStyle: const TextStyle(
+          color: Color(0xff7C7C7C),
+        ),
         labelText: labelText,
         filled: true,
         fillColor: const Color.fromRGBO(51, 163, 232, 0.13),

@@ -4,39 +4,41 @@ class CustomButton extends StatelessWidget {
   final String labelText;
   final VoidCallback onPress;
   final ButtonStyle? btnStyle;
-  final EdgeInsetsGeometry paddingBtn;
+  final double? width;
+  final double? height;
 
   const CustomButton({
     super.key,
     required this.labelText,
     required this.onPress,
+    this.height = 52.0,
+    this.width = double.infinity,
     this.btnStyle,
-    this.paddingBtn = const EdgeInsets.symmetric(
-      horizontal: 0,
-      vertical: 0,
-    ),
   });
 
   @override
   Widget build(BuildContext context) {
     final defaultStyle = ElevatedButton.styleFrom(
-      backgroundColor: Colors.blue,
+      backgroundColor: const Color(0xff33A3E8),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(30),
       ),
-      padding: paddingBtn,
     );
 
     final mergedStyle = defaultStyle.merge(btnStyle);
 
-    return ElevatedButton(
-      onPressed: onPress,
-      style: mergedStyle,
-      child: Text(
-        labelText,
-        style: const TextStyle(
-          color: Colors.white,
-          fontSize: 18,
+    return SizedBox(
+      width: width,
+      height: height,
+      child: ElevatedButton(
+        onPressed: onPress,
+        style: mergedStyle,
+        child: Text(
+          labelText,
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 14,
+          ),
         ),
       ),
     );

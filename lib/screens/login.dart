@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../components/inputs/custom_input.dart';
 import '../components/inputs/password_input.dart';
 import 'package:handy_man/components/buttons/custom_button.dart';
+import '../utils/screen_size_extension.dart';
 
 class LoginPage extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
@@ -11,27 +12,38 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    final isKeyboardOpen = MediaQuery.of(context).viewInsets.bottom > 0;
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0),
-          child: Column(
-            children: [
-              Expanded(
+        child: SingleChildScrollView(
+          physics: isKeyboardOpen
+              ? const BouncingScrollPhysics()
+              : const NeverScrollableScrollPhysics(),
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: context.widthPercent(32),
+            ),
+            child: ConstrainedBox(
+              constraints: BoxConstraints(
+                minHeight: screenHeight - context.heightPercent(52.0),
+              ),
+              child: Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    //Серый круг баурсак
+                    // Серый круг
                     const CircleAvatar(
                       radius: 94,
                       backgroundColor: Color(0xffD9D9D9),
                     ),
-                    const SizedBox(
-                      height: 19,
+                    SizedBox(
+                      height: context.heightPercent(20),
                     ),
 
-                    //Приветсвенное сообщение
+                    // Приветственное сообщение
                     const Text(
                       'Welcome to HandyMan!',
                       style: TextStyle(
@@ -40,43 +52,43 @@ class LoginPage extends StatelessWidget {
                         color: Colors.black,
                       ),
                     ),
-                    const SizedBox(
-                      height: 40,
+                    SizedBox(
+                      height: context.heightPercent(40),
                     ),
 
-                    //Инпут для email'a или номера
+                    // Инпут для email'a или номера
                     CustomInput(
                       labelText: 'Email/Number',
                       controller: emailController,
                     ),
-                    const SizedBox(
-                      height: 20,
+                    SizedBox(
+                      height: context.heightPercent(20),
                     ),
 
-                    //Инпут для пароля
+                    // Инпут для пароля
                     PasswordInput(
                       controller: passwordController,
                     ),
-                    const SizedBox(
-                      height: 44,
+                    SizedBox(
+                      height: context.heightPercent(44),
                     ),
 
-                    //Кнопка для Login'a
+                    // Кнопка Login
                     CustomButton(
                       labelText: 'Login',
-                      paddingBtn: const EdgeInsets.symmetric(
-                        horizontal: 160,
-                        vertical: 12,
-                      ),
-                      onPress: () {},
+                      onPress: () {
+                        Navigator.pushNamed(context, '/MainNavigation');
+                      },
                     ),
-                    const SizedBox(
-                      height: 8,
+                    SizedBox(
+                      height: context.heightPercent(8),
                     ),
 
-                    //Кнопка 'Forgot password?'
+                    // Кнопка 'Forgot password'
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/ForgotPassword');
+                      },
                       style: TextButton.styleFrom(
                         minimumSize: Size.zero,
                         padding: EdgeInsets.zero,
@@ -92,40 +104,36 @@ class LoginPage extends StatelessWidget {
                   ],
                 ),
               ),
-
-              //Кнопка для регистрации
-              Padding(
-                padding: const EdgeInsets.only(
-                  bottom: 16.0,
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text(
-                      "Don’t have an account? ",
-                      style: TextStyle(color: Colors.black54),
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/SignUp');
-                      },
-                      style: TextButton.styleFrom(
-                        minimumSize: Size.zero,
-                        padding: EdgeInsets.zero,
-                        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                      ),
-                      child: const Text(
-                        "Register!",
-                        style: TextStyle(
-                          color: Color(0xff33A3E8),
-                        ),
-                      ),
-                    ),
-                  ],
+            ),
+          ),
+        ),
+      ),
+      bottomNavigationBar: Padding(
+        padding: EdgeInsets.only(bottom: context.heightPercent(52.0)),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text(
+              "Don’t have an account? ",
+              style: TextStyle(color: Colors.black54),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/SignUp');
+              },
+              style: TextButton.styleFrom(
+                minimumSize: Size.zero,
+                padding: EdgeInsets.zero,
+                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+              ),
+              child: const Text(
+                "Register!",
+                style: TextStyle(
+                  color: Color(0xff33A3E8),
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
