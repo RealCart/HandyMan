@@ -4,8 +4,8 @@ class CustomInput extends StatelessWidget {
   final String labelText;
   final bool obscureText;
   final TextEditingController controller;
-  final Icon? prefixIcon;
-  final IconButton? suffixIcon;
+  final Widget? prefixIcon;
+  final Widget? suffixIcon;
   final TextInputType keyboardType;
 
   const CustomInput({

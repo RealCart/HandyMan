@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:handy_man/providers/bottom_bar_index.dart';
 import '../../utils/screen_size_extension.dart';
 import '../../components/inputs/search_input.dart';
 import '../../components/sections_header.dart';
 import '../../components/horizontal_category_list.dart';
 import '../../components/buttons/custom_button.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatelessWidget {
-  final TextEditingController search = TextEditingController();
+  final TextEditingController searchController = TextEditingController();
 
   HomeScreen({super.key});
 
@@ -30,28 +31,34 @@ class HomeScreen extends StatelessWidget {
                     child: Column(
                       children: [
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
+                            Row(
+                              children: [
+                                IconButton(
+                                  onPressed: () {},
+                                  icon: Image.asset(
+                                    "assets/images/avatar.png",
+                                    height: context.heightPercent(50.0),
+                                    width: context.widthPercent(50.0),
+                                  ),
+                                ),
+                                const Text(
+                                  "Hi There!",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20.0,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              ],
+                            ),
                             IconButton(
                               onPressed: () {},
-                              icon: SvgPicture.asset(
-                                "assets/icons/profile.svg",
-                              ),
-                            ),
-                            SizedBox(
-                              width: context.widthPercent(15.0),
-                            ),
-                            const Text(
-                              "Hi There!",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20.0,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                            IconButton(
-                              onPressed: () {},
-                              icon: SvgPicture.asset(
-                                "assets/icons/bell_icon.svg",
+                              icon: Image.asset(
+                                "assets/images/notification_bell.png",
+                                width: context.widthPercent(19.0),
+                                height: context.heightPercent(19.0),
                               ),
                             ),
                           ],
@@ -129,9 +136,21 @@ class HomeScreen extends StatelessWidget {
             ),
             child: Column(
               children: [
-                SearchInput(
-                  controller: search,
-                  hintText: "Search for services",
+                Container(
+                  decoration: const BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color: Color.fromRGBO(0, 0, 0, 0.25),
+                        blurRadius: 20,
+                        offset: Offset(6, 6),
+                        spreadRadius: -4,
+                      ),
+                    ],
+                  ),
+                  child: SearchInput(
+                    controller: searchController,
+                    hintText: "Search for services",
+                  ),
                 ),
                 SizedBox(
                   height: context.heightPercent(20.0),
@@ -139,7 +158,9 @@ class HomeScreen extends StatelessWidget {
                 Sectionsheader(
                   title: "Categories",
                   actionTitle: "View all",
-                  onPressed: () {},
+                  onPressed: () {
+                    context.read<BottomBarIndex>().changeBarIndex(newIndex: 2);
+                  },
                 ),
                 SizedBox(
                   height: context.heightPercent(10.0),
@@ -147,23 +168,19 @@ class HomeScreen extends StatelessWidget {
                 Horizontalcategorylist(
                   categories: [
                     CategoryItem(
-                      onPressed: () {},
-                      assetName: "assets/icons/worker.svg",
+                      assetName: "assets/images/mechanic.png",
                       label: "Carpentry",
                     ),
                     CategoryItem(
-                      onPressed: () {},
-                      assetName: "assets/icons/worker.svg",
+                      assetName: "assets/images/mechanic.png",
                       label: "Moving",
                     ),
                     CategoryItem(
-                      onPressed: () {},
-                      assetName: "assets/icons/plumber.svg",
+                      assetName: "assets/images/plumber.png",
                       label: "Plumber",
                     ),
                     CategoryItem(
-                      onPressed: () {},
-                      assetName: "assets/icons/cleaning.svg",
+                      assetName: "assets/images/cleaner.png",
                       label: "Cleaning",
                     ),
                   ],
@@ -218,7 +235,9 @@ class HomeScreen extends StatelessWidget {
                 Sectionsheader(
                   title: "Popular services",
                   actionTitle: "View all",
-                  onPressed: () {},
+                  onPressed: () {
+                    context.read<BottomBarIndex>().changeBarIndex(newIndex: 2);
+                  },
                 ),
                 SizedBox(
                   height: context.heightPercent(10.0),
@@ -226,23 +245,19 @@ class HomeScreen extends StatelessWidget {
                 Horizontalcategorylist(
                   categories: [
                     CategoryItem(
-                      onPressed: () {},
-                      assetName: "assets/icons/worker.svg",
+                      assetName: "assets/images/mechanic.png",
                       label: "Cer",
                     ),
                     CategoryItem(
-                      onPressed: () {},
-                      assetName: "assets/icons/worker.svg",
+                      assetName: "assets/images/mechanic.png",
                       label: "Moving",
                     ),
                     CategoryItem(
-                      onPressed: () {},
-                      assetName: "assets/icons/plumber.svg",
+                      assetName: "assets/images/plumber.png",
                       label: "Plumber",
                     ),
                     CategoryItem(
-                      onPressed: () {},
-                      assetName: "assets/icons/cleaning.svg",
+                      assetName: "assets/images/cleaner.png",
                       label: "Cleaning",
                     ),
                   ],

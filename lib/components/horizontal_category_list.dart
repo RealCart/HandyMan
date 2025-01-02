@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import '../../utils/screen_size_extension.dart';
 
 class Horizontalcategorylist extends StatelessWidget {
@@ -17,7 +16,6 @@ class Horizontalcategorylist extends StatelessWidget {
         children: categories
             .map(
               (category) => CategoryCart(
-                onPressed: category.onPressed,
                 assetName: category.assetName,
                 label: category.label,
               ),
@@ -29,13 +27,11 @@ class Horizontalcategorylist extends StatelessWidget {
 }
 
 class CategoryCart extends StatelessWidget {
-  final VoidCallback onPressed;
   final String label;
   final String assetName;
 
   const CategoryCart({
     super.key,
-    required this.onPressed,
     required this.assetName,
     required this.label,
   });
@@ -49,14 +45,18 @@ class CategoryCart extends StatelessWidget {
         borderRadius: const BorderRadius.all(Radius.circular(10.0)),
         clipBehavior: Clip.antiAlias,
         child: InkWell(
-          onTap: onPressed,
+          onTap: () {},
           child: SizedBox(
             height: context.heightPercent(80.0),
             width: context.widthPercent(82.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SvgPicture.asset(assetName),
+                Image.asset(
+                  assetName,
+                  width: context.widthPercent(38.0),
+                  height: context.heightPercent(38.0),
+                ),
                 Text(
                   label,
                   style: const TextStyle(fontSize: 15, color: Colors.black),
@@ -72,12 +72,10 @@ class CategoryCart extends StatelessWidget {
 }
 
 class CategoryItem {
-  final VoidCallback onPressed;
   final String assetName;
   final String label;
 
   CategoryItem({
-    required this.onPressed,
     required this.assetName,
     required this.label,
   });

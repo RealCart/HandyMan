@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:handy_man/providers/bottom_bar_index.dart';
 import '../screens/Main page/home_screen.dart';
-import '../utils/screen_size_extension.dart';
+import '../screens/Main page/service_screen.dart';
+import '../screens/Main page/profile_screen.dart';
+import '../../models/bottom_nav_item_data.dart';
+import './components/custom_navigation_bar.dart';
+import 'package:provider/provider.dart';
 
 class MainNavigation extends StatefulWidget {
   const MainNavigation({super.key});
@@ -11,70 +15,50 @@ class MainNavigation extends StatefulWidget {
 }
 
 class _MainNavigationState extends State<MainNavigation> {
-  int _currentIndex = 0;
-
   final List<Widget> _screens = [
     HomeScreen(),
+    const Center(child: Text('Сообщения')),
+    ServiceScreen(),
+    const ProfileScreen(),
   ];
+
+  final List<BottomNavItemData> _items = [
+    BottomNavItemData(icon: Icons.home, label: 'Главная'),
+    BottomNavItemData(icon: Icons.message, label: 'Сообщения'),
+    BottomNavItemData(icon: Icons.build, label: 'Услуги'),
+    BottomNavItemData(icon: Icons.person, label: 'Профиль'),
+  ];
+
+  Future<bool> onWillPop() async {
+    int currentIndex = context.read<BottomBarIndex>().index;
+
+    if (currentIndex > 0) {
+      context.read<BottomBarIndex>().changeBarIndex(newIndex: 0);
+      return false;
+    } else {
+      return true;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xffF6F6F6),
-      body: IndexedStack(
-        index: _currentIndex,
-        children: _screens,
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        onTap: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
-        elevation: 0.0,
-        fixedColor: Colors.black,
-        selectedFontSize: 11,
-        unselectedFontSize: 11,
-        unselectedItemColor: Colors.black,
-        type: BottomNavigationBarType.fixed,
-        backgroundColor: Colors.transparent,
-        items: [
-          const BottomNavigationBarItem(
-            backgroundColor: Colors.white,
-            icon: Icon(
-              Icons.home,
-              size: 22.0,
-            ),
-            label: 'Главная',
-          ),
-          BottomNavigationBarItem(
-            backgroundColor: Colors.white,
-            icon: SvgPicture.asset(
-              "assets/icons/chat_icon.svg",
-              width: context.widthPercent(22.0),
-              height: context.heightPercent(22.0),
-            ),
-            label: 'Сообщения',
-          ),
-          BottomNavigationBarItem(
-            backgroundColor: Colors.white,
-            icon: SvgPicture.asset(
-              "assets/icons/service_icon.svg",
-              width: context.widthPercent(22.0),
-              height: context.heightPercent(22.0),
-            ),
-            label: 'Услуги',
-          ),
-          const BottomNavigationBarItem(
-            backgroundColor: Colors.white,
-            icon: Icon(
-              Icons.person,
-              size: 22.0,
-            ),
-            label: 'Профиль',
-          ),
-        ],
+    int currentIndex = context.watch<BottomBarIndex>().index;
+
+    return WillPopScope(
+      onWillPop: onWillPop,
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        body: IndexedStack(
+          index: currentIndex,
+          children: _screens,
+        ),
+        bottomNavigationBar: CustomBottomNavBar(
+          currentIndex: currentIndex,
+          items: _items,
+          onItemSelected: (newIndex) {
+            context.read<BottomBarIndex>().changeBarIndex(newIndex: newIndex);
+          },
+        ),
       ),
     );
   }
