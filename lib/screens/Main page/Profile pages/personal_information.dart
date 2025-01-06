@@ -3,7 +3,6 @@ import '../../../components/inputs/custom_input.dart';
 import '../../../components/inputs/password_input.dart';
 import '../../../components/buttons/custom_button.dart';
 import '../../../utils/screen_size_extension.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class PersonalInformation extends StatelessWidget {
   final TextEditingController nameInput = TextEditingController();

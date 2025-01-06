@@ -29,73 +29,69 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        leadingWidth: context.widthPercent(105.0),
-        titleSpacing: 0.0,
-        leading: Row(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            IconButton(
-              splashColor: Colors.transparent,
-              highlightColor: Colors.transparent,
-              padding: EdgeInsets.zero,
-              constraints: const BoxConstraints(),
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              icon: const Icon(Icons.arrow_back_ios),
-            ),
-            IconButton(
-              padding: EdgeInsets.zero,
-              constraints: const BoxConstraints(),
-              onPressed: () {},
-              icon: Image.asset(
-                "assets/images/avatar.png",
-                width: context.widthPercent(40.0),
-                height: context.heightPercent(40.0),
-              ),
-            ),
-          ],
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(
+          context.heightPercent(90.0),
         ),
-        title: const Text(
-          "Hello, Name!",
-          style: TextStyle(
-            fontSize: 16,
-            color: Colors.black,
+        child: Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: context.widthPercent(20.0),
           ),
-        ),
-        actions: [
-          IconButton(
-            onPressed: () {
-              Navigator.pushNamed(context, '/SettingsPage');
-            },
-            icon: SvgPicture.asset('assets/icons/carbon_settings.svg'),
-          )
-        ],
-        bottom: PreferredSize(
-          preferredSize: Size.fromHeight(
-            context.heightPercent(35.0),
-          ),
-          child: Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: context.widthPercent(20.0),
-            ),
-            child: Row(
+          child: AppBar(
+            backgroundColor: Colors.transparent,
+            leadingWidth: context.widthPercent(105.0),
+            titleSpacing: 0.0,
+            automaticallyImplyLeading: false,
+            title: Row(
+              mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                _NavBarItem(
-                  label: "My subscription",
-                  onTap: () => _onNavBarItemTapped(0),
-                  isTapped: pageIndex == 0,
+                IconButton(
+                  padding: EdgeInsets.zero,
+                  constraints: const BoxConstraints(),
+                  onPressed: () {},
+                  icon: Image.asset(
+                    "assets/images/avatar.png",
+                    width: context.widthPercent(40.0),
+                    height: context.heightPercent(40.0),
+                  ),
                 ),
-                _NavBarItem(
-                  label: "Personal information",
-                  onTap: () => _onNavBarItemTapped(1),
-                  isTapped: pageIndex == 1,
+                const Text(
+                  "Hello, Name!",
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.black,
+                  ),
                 ),
               ],
+            ),
+            actions: [
+              IconButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/SettingsPage');
+                },
+                icon: SvgPicture.asset('assets/icons/carbon_settings.svg'),
+              )
+            ],
+            bottom: PreferredSize(
+              preferredSize: Size.fromHeight(
+                context.heightPercent(35.0),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  _NavBarItem(
+                    label: "My subscription",
+                    onTap: () => _onNavBarItemTapped(0),
+                    isTapped: pageIndex == 0,
+                  ),
+                  _NavBarItem(
+                    label: "Personal information",
+                    onTap: () => _onNavBarItemTapped(1),
+                    isTapped: pageIndex == 1,
+                  ),
+                ],
+              ),
             ),
           ),
         ),

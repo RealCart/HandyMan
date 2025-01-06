@@ -1,25 +1,22 @@
 import 'package:flutter/material.dart';
 import '../../utils/screen_size_extension.dart';
+import '../../components/settings_options.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        appBar: AppBar(
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(context.heightPercent(40.0)),
+        child: AppBar(
           backgroundColor: Colors.transparent,
-          leadingWidth: context.widthPercent(105.0),
-          titleSpacing: 0.0,
-          leading: Row(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.start,
+          automaticallyImplyLeading: false,
+          title: Row(
             children: [
               IconButton(
-                splashColor: Colors.transparent,
-                highlightColor: Colors.transparent,
                 padding: EdgeInsets.zero,
                 constraints: const BoxConstraints(),
                 onPressed: () {
@@ -37,18 +34,35 @@ class SettingsPage extends StatelessWidget {
                   height: context.heightPercent(40.0),
                 ),
               ),
+              const Text(
+                "Hello, Name!",
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
+              )
             ],
           ),
-          title: const Text(
-            "Hello, Name!",
-            style: TextStyle(
-              fontSize: 16,
-              color: Colors.black,
-            ),
-          ),
         ),
-        body: const Column(
-          children: [],
+      ),
+      body: Padding(
+        padding: EdgeInsets.symmetric(
+          horizontal: context.widthPercent(20.0),
+        ),
+        child: Column(
+          children: [
+            SizedBox(
+              height: context.heightPercent(30.0),
+            ),
+            SettingsOptions(label: "General", onTap: () {}),
+            SettingsOptions(label: "Избранное", onTap: () {}),
+            SettingsOptions(label: "Subscriptions", onTap: () {}),
+            SettingsOptions(label: "Payment methods", onTap: () {}),
+            SettingsOptions(label: "Manage addresses", onTap: () {}),
+            SettingsOptions(label: "Payment history", onTap: () {}),
+            SettingsOptions(label: "Help", onTap: () {}),
+            SettingsOptions(label: "FAQ", onTap: () {}),
+          ],
         ),
       ),
     );
