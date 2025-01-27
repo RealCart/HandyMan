@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import '../utils/screen_size_extension.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class SettingsOptions extends StatelessWidget {
+class LanguageOption extends StatelessWidget {
   final String label;
+  final String subTitle;
   final VoidCallback onTap;
-  const SettingsOptions({
+  const LanguageOption({
     super.key,
     required this.label,
+    required this.subTitle,
     required this.onTap,
   });
 
@@ -29,7 +31,21 @@ class SettingsOptions extends StatelessWidget {
                 fontSize: 16,
               ),
             ),
-            SvgPicture.asset("assets/icons/settings_options_arrow.svg")
+            Row(
+              children: [
+                Text(
+                  subTitle,
+                  style: const TextStyle(
+                    color: Color(0xff9A9A9A),
+                    fontSize: 16,
+                  ),
+                ),
+                SizedBox(
+                  width: context.widthPercent(8.0),
+                ),
+                SvgPicture.asset("assets/icons/settings_options_arrow.svg")
+              ],
+            )
           ],
         ),
       ),

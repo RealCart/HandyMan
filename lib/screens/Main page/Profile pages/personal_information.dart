@@ -25,11 +25,13 @@ class PersonalInformation extends StatelessWidget {
             CustomInput(
               labelText: "Name",
               controller: nameInput,
+              validation: (value) {},
             ),
             SizedBox(height: context.heightPercent(10.0)),
             CustomInput(
               labelText: "Email/Number",
               controller: emailInput,
+              validation: (value) {},
             ),
             SizedBox(height: context.heightPercent(10.0)),
             Row(
@@ -38,6 +40,7 @@ class PersonalInformation extends StatelessWidget {
                   child: CustomInput(
                     labelText: "Date of birth",
                     controller: birthDayInput,
+                    validation: (value) {},
                     suffixIcon: const Icon(Icons.calendar_month_outlined),
                   ),
                 ),
@@ -46,6 +49,7 @@ class PersonalInformation extends StatelessWidget {
                   child: CustomInput(
                     labelText: "Gender",
                     controller: gender,
+                    validation: (value) {},
                   ),
                 ),
               ],
@@ -53,6 +57,7 @@ class PersonalInformation extends StatelessWidget {
             SizedBox(height: context.heightPercent(10.0)),
             PasswordInput(
               controller: password,
+              validation: (value) {},
             ),
             SizedBox(height: context.heightPercent(10.0)),
             CustomButton(

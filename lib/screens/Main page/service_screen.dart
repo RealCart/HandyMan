@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:handy_man/components/service_category_widget.dart';
 import '../../components/inputs/search_input.dart';
 import '../../utils/screen_size_extension.dart';
-import '../../components/service_card.dart';
+import 'package:handy_man/data/data_service.dart';
 
 class ServiceScreen extends StatelessWidget {
   final TextEditingController searchController = TextEditingController();
@@ -31,6 +32,7 @@ class ServiceScreen extends StatelessWidget {
         ),
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
             decoration: const BoxDecoration(
@@ -49,44 +51,19 @@ class ServiceScreen extends StatelessWidget {
               ),
             ),
           ),
-          Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: context.widthPercent(20.0),
-            ),
-            child: Column(
-              children: [
-                SizedBox(
-                  height: context.heightPercent(20.0),
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: context.widthPercent(20.0),
+              ),
+              child: ListView.builder(
+                itemCount: serviceCategory.length,
+                itemBuilder: (context, index) => SingleServiceCategory(
+                  singleService: serviceCategory[index],
                 ),
-                ServiceCard(services: [
-                  ServiceItem(
-                    label: "House",
-                    assetName: "assets/icons/worker.svg",
-                  ),
-                  ServiceItem(
-                    label: "Carpet",
-                    assetName: "assets/icons/worker.svg",
-                  ),
-                  ServiceItem(
-                    label: "Windows",
-                    assetName: "assets/icons/worker.svg",
-                  ),
-                  ServiceItem(
-                    label: "Exterior\nhome",
-                    assetName: "assets/icons/worker.svg",
-                  ),
-                  ServiceItem(
-                    label: "House",
-                    assetName: "assets/icons/worker.svg",
-                  ),
-                  ServiceItem(
-                    label: "Interior\nhome",
-                    assetName: "assets/icons/worker.svg",
-                  ),
-                ])
-              ],
+              ),
             ),
-          )
+          ),
         ],
       ),
     );

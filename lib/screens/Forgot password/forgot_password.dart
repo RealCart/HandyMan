@@ -60,6 +60,7 @@ class ForgotPassword extends StatelessWidget {
                   CustomInput(
                     labelText: "Email/Number",
                     controller: emailControler,
+                    validation: (value) {},
                   ),
                   SizedBox(
                     height: context.heightPercent(20.0),
@@ -68,6 +69,7 @@ class ForgotPassword extends StatelessWidget {
                   //Password input
                   PasswordInput(
                     controller: passwordContoler,
+                    validation: (value) {},
                   ),
                   SizedBox(
                     height: context.heightPercent(44.0),

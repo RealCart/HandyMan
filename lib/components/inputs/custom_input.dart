@@ -6,12 +6,14 @@ class CustomInput extends StatelessWidget {
   final TextEditingController controller;
   final Widget? prefixIcon;
   final Widget? suffixIcon;
+  final FormFieldValidator<String>? validation;
   final TextInputType keyboardType;
 
   const CustomInput({
     super.key,
     required this.labelText,
     required this.controller,
+    this.validation,
     this.obscureText = false,
     this.prefixIcon,
     this.suffixIcon,
@@ -20,11 +22,12 @@ class CustomInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
       controller: controller,
       obscureText: obscureText,
       cursorColor: const Color(0xff7C7C7C),
       keyboardType: keyboardType,
+      validator: validation,
       decoration: InputDecoration(
         labelStyle: const TextStyle(
           color: Color(0xff7C7C7C),

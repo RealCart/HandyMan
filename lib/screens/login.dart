@@ -9,6 +9,7 @@ class LoginPage extends StatelessWidget {
   final TextEditingController passwordController = TextEditingController();
 
   LoginPage({super.key});
+  final _fromKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -17,20 +18,21 @@ class LoginPage extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: Colors.white,
-      body: SafeArea(
-        child: SingleChildScrollView(
-          physics: isKeyboardOpen
-              ? const BouncingScrollPhysics()
-              : const NeverScrollableScrollPhysics(),
-          child: Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: context.widthPercent(32),
+      body: SingleChildScrollView(
+        physics: isKeyboardOpen
+            ? const BouncingScrollPhysics()
+            : const NeverScrollableScrollPhysics(),
+        child: Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: context.widthPercent(32),
+          ),
+          child: ConstrainedBox(
+            constraints: BoxConstraints(
+              minHeight: screenHeight - context.heightPercent(52.0),
             ),
-            child: ConstrainedBox(
-              constraints: BoxConstraints(
-                minHeight: screenHeight - context.heightPercent(52.0),
-              ),
-              child: Center(
+            child: Center(
+              child: Form(
+                key: _fromKey,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

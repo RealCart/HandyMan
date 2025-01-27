@@ -4,12 +4,12 @@ import '../../utils/screen_size_extension.dart';
 class PasswordInput extends StatefulWidget {
   final TextEditingController controller;
   final String inputLabel;
-  final String helperTextInput;
+  final FormFieldValidator<String>? validation;
 
   const PasswordInput({
     super.key,
     required this.controller,
-    this.helperTextInput = "",
+    this.validation,
     this.inputLabel = "Password",
   });
 
@@ -28,11 +28,12 @@ class _PasswordInputState extends State<PasswordInput> {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
       cursorHeight: 20,
       controller: widget.controller,
       obscureText: _obscureText,
       cursorColor: const Color(0xff7C7C7C),
+      validator: widget.validation,
       decoration: InputDecoration(
         labelText: widget.inputLabel,
         labelStyle: const TextStyle(
@@ -50,7 +51,6 @@ class _PasswordInputState extends State<PasswordInput> {
           ),
           onPressed: _togglePasswordVisibility,
         ),
-        helperText: widget.helperTextInput,
         contentPadding: EdgeInsets.symmetric(
           horizontal: context.widthPercent(20.0),
         ),

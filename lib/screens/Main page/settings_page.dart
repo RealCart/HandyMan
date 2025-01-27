@@ -54,14 +54,44 @@ class SettingsPage extends StatelessWidget {
             SizedBox(
               height: context.heightPercent(30.0),
             ),
-            SettingsOptions(label: "General", onTap: () {}),
-            SettingsOptions(label: "Избранное", onTap: () {}),
-            SettingsOptions(label: "Subscriptions", onTap: () {}),
-            SettingsOptions(label: "Payment methods", onTap: () {}),
-            SettingsOptions(label: "Manage addresses", onTap: () {}),
+            SettingsOptions(
+              label: "General",
+              onTap: () {
+                Navigator.pushNamed(context, "/SettingsPage/GeneralPage");
+              },
+            ),
+            SettingsOptions(
+              label: "Избранное",
+              onTap: () {
+                Navigator.pushNamed(context, '/SettingsPage/FavoritesPage');
+              },
+            ),
+            SettingsOptions(
+              label: "Subscriptions",
+              onTap: () {
+                Navigator.pushNamed(context, '/SettingsPage/UserSubsription');
+              },
+            ),
+            SettingsOptions(
+              label: "Payment methods",
+              onTap: () {
+                Navigator.pushNamed(context, '/SettingsPage/PaymentsMethods');
+              },
+            ),
+            SettingsOptions(
+              label: "Manage addresses",
+              onTap: () {
+                Navigator.pushNamed(context, "/SettingsPage/ManageAdresses");
+              },
+            ),
             SettingsOptions(label: "Payment history", onTap: () {}),
             SettingsOptions(label: "Help", onTap: () {}),
-            SettingsOptions(label: "FAQ", onTap: () {}),
+            SettingsOptions(
+              label: "FAQ",
+              onTap: () {
+                Navigator.pushNamed(context, '/SettingsPage/FAQPage');
+              },
+            ),
           ],
         ),
       ),

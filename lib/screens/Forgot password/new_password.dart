@@ -71,12 +71,14 @@ class NewPassword extends StatelessWidget {
                     PasswordInput(
                       controller: newPassword,
                       inputLabel: "New password",
+                      validation: (value) {},
                     ),
 
                     //"Repeat new password" input
                     PasswordInput(
                       controller: repeatNewPassword,
                       inputLabel: "Repeat new password",
+                      validation: (value) {},
                     ),
                     SizedBox(
                       height: context.heightPercent(44.0),
