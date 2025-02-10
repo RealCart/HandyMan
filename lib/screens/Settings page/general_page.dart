@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../components/settings_options.dart';
+import '../../presentation/settings_options.dart';
 import '../../utils/screen_size_extension.dart';
-import 'package:handy_man/components/language_option.dart';
-import 'package:handy_man/components/push_notification_switcher.dart';
+import 'package:handy_man/presentation/language_option.dart';
+import 'package:handy_man/presentation/push_notification_switcher.dart';
 
 class GeneralPage extends StatelessWidget {
   const GeneralPage({super.key});
@@ -38,7 +38,14 @@ class GeneralPage extends StatelessWidget {
             const PushNotificationSwitcher(label: "Push-уведомления"),
             SettingsOptions(label: "Настройки безопасности", onTap: () {}),
             SettingsOptions(label: "Политика конфиденциальности", onTap: () {}),
-            LanguageOption(label: "Language", subTitle: "Русский", onTap: () {})
+            LanguageOption(
+              label: "Language",
+              subTitle: "Русский",
+              onTap: () {
+                Navigator.pushNamed(
+                    context, '/SettingsPage/GeneralPage/LanguagePage');
+              },
+            )
           ],
         ),
       ),

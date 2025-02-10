@@ -33,6 +33,11 @@ dependencies:
   flutter_svg: ^2.0.16
   flutter_svg_icons: ^0.0.1+4
   provider:
+  dio: ^5.8.0
+  get_it: ^8.0.3
+  flutter_bloc: ^9.0.0
+  dartz: ^0.10.1
+  shared_preferences: ^2.5.1
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

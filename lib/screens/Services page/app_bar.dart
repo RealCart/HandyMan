@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:handy_man/components/like_widget.dart';
+import 'package:handy_man/presentation/like_widget.dart';
 
 class BasicAppBar extends StatelessWidget implements PreferredSizeWidget {
   const BasicAppBar({super.key});

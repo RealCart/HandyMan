@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../../components/subscription_banner.dart';
+import '../../../presentation/subscription_banner.dart';
 import '../../../utils/screen_size_extension.dart';
-import '../../../components/progress_circle.dart';
-import '../../../components/buttons/custom_button.dart';
+import '../../../presentation/progress_circle.dart';
+import '../../../presentation/buttons/custom_button.dart';
 
 class UserSubscription extends StatelessWidget {
   const UserSubscription({super.key});

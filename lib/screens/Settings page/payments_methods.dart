@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:handy_man/components/buttons/custom_button.dart';
-import 'package:handy_man/components/card_methods_widget.dart';
+import 'package:handy_man/presentation/buttons/custom_button.dart';
+import 'package:handy_man/presentation/card_methods_widget.dart';
 import 'package:handy_man/data/data_service.dart';
 
 class PaymentsMethods extends StatefulWidget {
@@ -25,11 +25,14 @@ class _PaymentsMethodsState extends State<PaymentsMethods> {
           },
           icon: const Icon(Icons.arrow_back_ios),
         ),
-        title: const Text("Мои карты"),
+        title: const Text(
+          "Мои карты",
+          style: TextStyle(fontSize: 16),
+        ),
         centerTitle: true,
       ),
       body: Padding(
-        padding: const EdgeInsets.only(bottom: 20.0, left: 20.0, right: 20.0 ),
+        padding: const EdgeInsets.only(bottom: 20.0, left: 20.0, right: 20.0),
         child: Column(
           children: [
             Expanded(

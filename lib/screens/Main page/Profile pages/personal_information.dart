@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../../components/inputs/custom_input.dart';
-import '../../../components/inputs/password_input.dart';
-import '../../../components/buttons/custom_button.dart';
+import '../../../presentation/inputs/custom_input.dart';
+import '../../../presentation/inputs/password_input.dart';
+import '../../../presentation/buttons/custom_button.dart';
 import '../../../utils/screen_size_extension.dart';
 
 class PersonalInformation extends StatelessWidget {

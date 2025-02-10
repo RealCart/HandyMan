@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:handy_man/components/Subsctription/subscription_hourly.dart';
+import 'package:handy_man/presentation/Subsctription/subscription_hourly.dart';
 import 'package:handy_man/utils/screen_size_extension.dart';
-import 'package:handy_man/components/Subsctription/subscription_monthly.dart';
-import 'package:handy_man/components/Subsctription/subscription_yearly.dart';
+import 'package:handy_man/presentation/Subsctription/subscription_monthly.dart';
+import 'package:handy_man/presentation/Subsctription/subscription_yearly.dart';
 
 class SubscriptionPage extends StatefulWidget {
   const SubscriptionPage({super.key});

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:handy_man/utils/screen_size_extension.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:handy_man/components/buttons/custom_button.dart';
+import 'package:handy_man/presentation/buttons/custom_button.dart';
 
-class SubscriptionMonthly extends StatelessWidget {
-  const SubscriptionMonthly({super.key});
+class SubscriptionHourly extends StatelessWidget {
+  const SubscriptionHourly({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +17,7 @@ class SubscriptionMonthly extends StatelessWidget {
       ),
       child: Padding(
         padding: EdgeInsets.only(
+          top: context.heightPercent(10.0),
           right: context.widthPercent(10.0),
           left: context.widthPercent(10.0),
           bottom: context.heightPercent(16.0),
@@ -24,12 +25,12 @@ class SubscriptionMonthly extends StatelessWidget {
         child: Center(
           child: Column(
             children: [
-              SvgPicture.asset("assets/icons/subscription_monthly.svg"),
+              SvgPicture.asset('assets/icons/subscriptionHourly.svg'),
               SizedBox(
                 height: context.heightPercent(14.0),
               ),
               const Text(
-                "AED 250/month",
+                "10 hours",
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w500,
@@ -40,7 +41,7 @@ class SubscriptionMonthly extends StatelessWidget {
                 height: context.heightPercent(10.0),
               ),
               const Text(
-                "Get services with less charge and make \nyour order successful",
+                "Get services with less charge and make your order successful",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 14,

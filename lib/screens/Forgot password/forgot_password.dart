@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:handy_man/components/textButtons/return_to_login.dart';
-import '../../components/inputs/custom_input.dart';
-import '../../components/inputs/password_input.dart';
-import '../../components/buttons/custom_button.dart';
+import 'package:handy_man/presentation/textButtons/return_to_login.dart';
+import '../../presentation/inputs/custom_input.dart';
+import '../../presentation/inputs/password_input.dart';
+import '../../presentation/buttons/custom_button.dart';
 import '../../utils/screen_size_extension.dart';
 
 class ForgotPassword extends StatelessWidget {

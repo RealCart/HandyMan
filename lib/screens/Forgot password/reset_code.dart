@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:handy_man/components/buttons/custom_button.dart';
-import 'package:handy_man/components/textButtons/return_to_login.dart';
-import '../../components/inputs/custom_pinput.dart';
+import 'package:handy_man/presentation/buttons/custom_button.dart';
+import 'package:handy_man/presentation/textButtons/return_to_login.dart';
+import '../../presentation/inputs/custom_pinput.dart';
 import '../../utils/screen_size_extension.dart';
 
 class ResetCode extends StatelessWidget {

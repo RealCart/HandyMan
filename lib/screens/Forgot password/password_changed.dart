@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../utils/screen_size_extension.dart';
-import '../../components/buttons/custom_button.dart';
+import '../../presentation/buttons/custom_button.dart';
 
 class PasswordChangedPage extends StatelessWidget {
   const PasswordChangedPage({super.key});

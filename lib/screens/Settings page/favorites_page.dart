@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:handy_man/utils/screen_size_extension.dart';
-import '../../components/favorites_card.dart';
+import '../../presentation/favorites_card.dart';
 
 class FavoritesPage extends StatelessWidget {
   const FavoritesPage({super.key});

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:handy_man/components/buttons/custom_button.dart';
-import 'package:handy_man/components/rating_widget.dart';
-import 'package:handy_man/components/service_hours_widget.dart';
+import 'package:handy_man/presentation/buttons/custom_button.dart';
+import 'package:handy_man/presentation/rating_widget.dart';
+import 'package:handy_man/presentation/service_hours_widget.dart';
 import 'package:handy_man/data/data_service.dart';
 import 'package:handy_man/screens/Services%20page/app_bar.dart';
 import 'package:handy_man/screens/Services%20page/booking_service.dart';
@@ -12,7 +12,7 @@ class ServicePage extends StatelessWidget {
     required this.serviceId,
   });
 
-  final String serviceId;
+  final int serviceId;
 
   @override
   Widget build(BuildContext context) {

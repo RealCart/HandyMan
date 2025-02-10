@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:handy_man/models/service_card_category.dart';
 import 'package:handy_man/screens/Services%20page/service_page.dart';
 
 class SingleServiceCard extends StatelessWidget {
@@ -9,12 +7,12 @@ class SingleServiceCard extends StatelessWidget {
     required this.service,
   });
 
-  final ServiceCardCategory service;
+  final Map<String, dynamic> service;
 
-  void selectService(BuildContext context, ServiceCardCategory service) {
+  void selectService(BuildContext context, int serviceId) {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) => ServicePage(serviceId: service.id),
+        builder: (context) => ServicePage(serviceId: serviceId),
       ),
     );
   }
@@ -35,7 +33,7 @@ class SingleServiceCard extends StatelessWidget {
         ),
       ),
       child: InkWell(
-        onTap: () => selectService(context, service),
+        onTap: () => selectService(context, service['id']),
         child: Material(
           shadowColor: Colors.grey,
           color: Colors.white,
@@ -43,14 +41,9 @@ class SingleServiceCard extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SvgPicture.asset(
-                service.assetName,
-                height: 40.0,
-                width: 40.0,
-              ),
               const SizedBox(height: 8.0),
               Text(
-                service.label,
+                service['name'],
                 textAlign: TextAlign.center,
                 style: const TextStyle(
                   fontSize: 11,

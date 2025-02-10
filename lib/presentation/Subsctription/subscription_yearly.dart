@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:handy_man/utils/screen_size_extension.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:handy_man/components/buttons/custom_button.dart';
+import 'package:handy_man/presentation/buttons/custom_button.dart';
 
-class SubscriptionHourly extends StatelessWidget {
-  const SubscriptionHourly({super.key});
+class SubscriptionYearly extends StatelessWidget {
+  const SubscriptionYearly({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,12 +24,12 @@ class SubscriptionHourly extends StatelessWidget {
         child: Center(
           child: Column(
             children: [
-              SvgPicture.asset('assets/icons/subscriptionHourly.svg'),
+              Image.asset('assets/images/subsriptionYearly.png'),
               SizedBox(
                 height: context.heightPercent(14.0),
               ),
               const Text(
-                "10 hours",
+                "AED 500/year",
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w500,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:handy_man/components/service_hours_widget.dart';
-import 'package:handy_man/components/slider/slider_widget.dart';
+import 'package:handy_man/presentation/service_hours_widget.dart';
+import 'package:handy_man/presentation/slider/slider_widget.dart';
 import 'package:handy_man/models/service.dart';
 
 class BookingService extends StatefulWidget {

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:handy_man/components/buttons/custom_button.dart';
+import 'package:handy_man/presentation/adresses_button.dart';
+import 'package:handy_man/presentation/buttons/custom_button.dart';
+import 'package:handy_man/data/data_service.dart';
 
 class ManageAdresses extends StatelessWidget {
   const ManageAdresses({super.key});
@@ -7,7 +9,7 @@ class ManageAdresses extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: const Color(0xffF6F6F6),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         leading: IconButton(
@@ -18,7 +20,7 @@ class ManageAdresses extends StatelessWidget {
         ),
         title: const Text(
           "Manage addresses",
-          style: TextStyle(fontSize: 14),
+          style: TextStyle(fontSize: 16),
         ),
         centerTitle: true,
       ),
@@ -40,6 +42,20 @@ class ManageAdresses extends StatelessWidget {
               onPress: () {},
               height: 40.0,
             ),
+            const SizedBox(height: 10.0),
+            Expanded(
+              child: ListView.builder(
+                itemCount: userAdresses.length,
+                itemBuilder: (context, index) => Padding(
+                  padding: EdgeInsets.only(
+                    bottom: index != userAdresses.length ? 8.0 : 0.0,
+                  ),
+                  child: AdressesButton(
+                    adresses: userAdresses[index],
+                  ),
+                ),
+              ),
+            )
           ],
         ),
       ),

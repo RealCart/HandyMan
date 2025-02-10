@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:handy_man/utils/screen_size_extension.dart';
-import '../components/buttons/custom_button.dart';
+import 'buttons/custom_button.dart';
 
 class FavoritesCard extends StatelessWidget {
   final String label;
