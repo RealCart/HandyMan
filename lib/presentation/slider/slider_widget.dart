@@ -72,9 +72,13 @@ class SliderWidget extends StatefulWidget {
     super.key,
     required this.initialValue,
     required this.onChanged,
+    required this.maxValueSlider,
+    required this.minValueSlider,
   });
 
   final double initialValue;
+  final int minValueSlider;
+  final int maxValueSlider;
   final void Function(double)? onChanged;
 
   @override
@@ -98,11 +102,11 @@ class _SliderWidgetState extends State<SliderWidget> {
       ),
       child: Slider(
         value: widget.initialValue,
-        max: 9000,
-        min: 40,
+        max: widget.maxValueSlider.toDouble(),
+        min: widget.minValueSlider.toDouble(),
         activeColor: const Color(0xffF1C40F),
         inactiveColor: const Color.fromRGBO(254, 211, 125, 0.33),
-        divisions: 900,
+        divisions: 100,
         label: widget.initialValue.round().toString(),
         onChanged: widget.onChanged,
       ),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:handy_man/bloc/personal_information_bloc/personal_information_bloc.dart';
+
 import '../../../presentation/inputs/custom_input.dart';
-import '../../../presentation/inputs/password_input.dart';
 import '../../../presentation/buttons/custom_button.dart';
 import '../../../utils/screen_size_extension.dart';
 
@@ -10,6 +12,7 @@ class PersonalInformation extends StatelessWidget {
   final TextEditingController birthDayInput = TextEditingController();
   final TextEditingController gender = TextEditingController();
   final TextEditingController password = TextEditingController();
+
   PersonalInformation({super.key});
 
   @override
@@ -55,13 +58,8 @@ class PersonalInformation extends StatelessWidget {
               ],
             ),
             SizedBox(height: context.heightPercent(10.0)),
-            PasswordInput(
-              controller: password,
-              validation: (value) {},
-            ),
-            SizedBox(height: context.heightPercent(10.0)),
             CustomButton(
-              labelText: "Delete account",
+              labelText: "Save account data",
               onPress: () {},
             ),
           ],

@@ -2,23 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:handy_man/presentation/buttons/custom_button.dart';
 import 'package:handy_man/presentation/rating_widget.dart';
 import 'package:handy_man/presentation/service_hours_widget.dart';
-import 'package:handy_man/data/data_service.dart';
 import 'package:handy_man/screens/Services%20page/app_bar.dart';
 import 'package:handy_man/screens/Services%20page/booking_service.dart';
 
 class ServicePage extends StatelessWidget {
   const ServicePage({
     super.key,
-    required this.serviceId,
+    required this.service,
   });
 
-  final int serviceId;
+  final Map<String, dynamic> service;
 
   @override
   Widget build(BuildContext context) {
-    final filteredService =
-        servicePageData.singleWhere((element) => element.id == serviceId);
-
     return Scaffold(
       backgroundColor: Colors.white,
       body: CustomScrollView(
@@ -32,7 +28,7 @@ class ServicePage extends StatelessWidget {
                   height: 20.0,
                 ),
                 Text(
-                  filteredService.title,
+                  service["name"],
                   style: const TextStyle(
                     fontSize: 20.0,
                     fontWeight: FontWeight.w500,
@@ -41,38 +37,15 @@ class ServicePage extends StatelessWidget {
                 const SizedBox(
                   height: 10.0,
                 ),
-                RatingWidget(rating: filteredService.rating),
+                RatingWidget(rating: service["rating"]),
                 const SizedBox(
                   height: 10.0,
                 ),
-                ServiceHoursWidget(serviceHours: filteredService.amountOfHours),
+                ServiceHoursWidget(serviceHours: service["duration"]),
                 const SizedBox(
                   height: 20.0,
                 ),
               ],
-            ),
-          ),
-          SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (context, index) {
-                final item = filteredService.description[index];
-                return ListTile(
-                  title: Text(
-                    item['title']!,
-                    style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                  subtitle: Text(
-                    item['description']!,
-                    style: const TextStyle(
-                      fontSize: 12,
-                    ),
-                  ),
-                );
-              },
-              childCount: filteredService.description.length,
             ),
           ),
           SliverToBoxAdapter(
@@ -87,7 +60,7 @@ class ServicePage extends StatelessWidget {
                       Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (context) =>
-                              BookingService(service: filteredService),
+                              BookingService(service: service),
                         ),
                       );
                     },

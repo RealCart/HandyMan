@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:handy_man/core/network/dio_client.dart';
 import 'package:handy_man/data/models/signin_req_params.dart';
@@ -20,13 +19,13 @@ class AuthApiServiceImp extends AuthApiService {
     try {
       var response = await sl<DioClient>()
           .post(ApiUrls.userSignUp, data: signupReq.toMap());
-      debugPrint("Sucessfully: ${response.data}");
+      print("Sucessfully: ${response.data}");
       SharedPreferences sharedPreferences =
           await SharedPreferences.getInstance();
-      sharedPreferences.setString('userData', response.data);
+      sharedPreferences.setString('userId', response.data['id']);
       return Right(response);
     } on DioException catch (error) {
-      debugPrint(">>>>>>>>>>>>>>>>>>>>>>> Error catched while signUp: $error");
+      print(">>>>>>>>>>>>>>>>>>>>>>> Error catched while signUp: $error");
       if (error.response != null) {
         return Left(error.response!.data);
       } else {
@@ -40,13 +39,13 @@ class AuthApiServiceImp extends AuthApiService {
     try {
       var response = await sl<DioClient>()
           .post(ApiUrls.userLogin, data: signinReq.toMap());
-      debugPrint("Successfully: $response");
+      print("Successfully: $response");
       SharedPreferences sharedPreferences =
           await SharedPreferences.getInstance();
-      sharedPreferences.setString('userData', response.data.toString());
+      sharedPreferences.setString('userId', response.data['id'].toString());
       return Right(response);
     } on DioException catch (error) {
-      debugPrint(">>>>>>>>>>>>>>>>>>>>>>> Error catched while signIn: $error");
+      print(">>>>>>>>>>>>>>>>>>>>>>> Error catched while signIn: $error");
       if (error.response != null) {
         return Left(error.response!.data);
       } else {

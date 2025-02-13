@@ -3,8 +3,11 @@ import 'package:handy_man/core/network/dio_client.dart';
 import 'package:handy_man/data/source/auth_api_service.dart';
 import 'package:handy_man/data/source/auth_local_service.dart';
 import 'package:handy_man/data/source/booking_api_service.dart';
+import 'package:handy_man/data/source/booking_contraints_api_service.dart';
 import 'package:handy_man/data/source/categories_api_service.dart';
+import 'package:handy_man/data/source/favorities_api_service.dart';
 import 'package:handy_man/data/source/service_api_service.dart';
+import 'package:handy_man/data/source/user_api_service.dart';
 
 final sl = GetIt.I;
 
@@ -20,4 +23,11 @@ void setupServiceLocator() {
   sl.registerSingleton<BookingApiService>(BookingApiServiceImpl());
 
   sl.registerSingleton<AuthLocalService>(AuthLocalServiceImpl());
+
+  sl.registerSingleton<UserApiService>(UserApiServiceImpl());
+
+  sl.registerSingleton<FavoritiesApiService>(FavoritiesApiServiceImpl());
+
+  sl.registerSingleton<BookingContraintsApiService>(
+      BookingContraintsApiServiceImpl());
 }

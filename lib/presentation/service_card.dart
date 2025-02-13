@@ -9,10 +9,10 @@ class SingleServiceCard extends StatelessWidget {
 
   final Map<String, dynamic> service;
 
-  void selectService(BuildContext context, int serviceId) {
+  void selectService(BuildContext context, Map<String, dynamic> service) {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) => ServicePage(serviceId: serviceId),
+        builder: (context) => ServicePage(service: service),
       ),
     );
   }
@@ -33,7 +33,7 @@ class SingleServiceCard extends StatelessWidget {
         ),
       ),
       child: InkWell(
-        onTap: () => selectService(context, service['id']),
+        onTap: () => selectService(context, service),
         child: Material(
           shadowColor: Colors.grey,
           color: Colors.white,

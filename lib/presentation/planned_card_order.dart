@@ -62,7 +62,12 @@ class PlannedCardOrder extends StatelessWidget {
             CustomButton(
               labelText: "Детали услуги",
               height: 39.0,
-              onPress: () {},
+              onPress: () {
+                Navigator.pushNamed(
+                  context,
+                  '/MainNaviagtion/PlannedOrderPage',
+                );
+              },
             ),
           ],
         ),

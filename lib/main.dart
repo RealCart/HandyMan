@@ -6,6 +6,7 @@ import 'package:handy_man/bloc/logged_in_bloc/logged_in_bloc.dart';
 import 'package:handy_man/bloc/logout_bloc/logout_bloc.dart';
 import 'package:handy_man/providers/bottom_bar_index.dart';
 import 'package:handy_man/screens/Forgot%20password/new_password.dart';
+import 'package:handy_man/screens/Main%20page/User%20order/planned_order_page.dart';
 import 'package:handy_man/screens/Settings%20page/language_page.dart';
 import 'package:handy_man/screens/Settings%20page/manage_adresses.dart';
 import 'package:handy_man/screens/Settings%20page/payment_history.dart';
@@ -82,6 +83,8 @@ class MyApp extends StatelessWidget {
             '/PasswordChanged': (context) => const PasswordChangedPage(),
             '/MainNavigation': (context) => const MainNavigation(),
             '/SettingsPage': (context) => const SettingsPage(),
+            '/MainNaviagtion/PlannedOrderPage': (context) =>
+                const PlannedOrderPage(),
             '/SettingsPage/GeneralPage': (context) => const GeneralPage(),
             '/SettingsPage/FavoritesPage': (context) => const FavoritesPage(),
             '/SettingsPage/UserSubsription': (context) =>
